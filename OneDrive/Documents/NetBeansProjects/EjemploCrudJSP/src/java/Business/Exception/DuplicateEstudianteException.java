@@ -8,3 +8,9 @@ package Business.Exception;
  *
  * @author sjara
  */
+public class DuplicateEstudianteException extends Exception {
+
+    public DuplicateEstudianteException(String message) {
+        super(message);
+    }
+}
