@@ -4,10 +4,13 @@
     Author     : sjara
 --%>
 
+<%--
+    Document   : index
+    Created on : 20 oct 2024
+    Author     : johnarrieta
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="Domain.Model.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>Página de Inicio</title>
@@ -29,6 +32,7 @@
             <li><a href="<%= request.getContextPath() %>/Controllers/UserController.jsp?action=showCreateForm">Agregar Usuario</a></li>
             <li><a href="<%= request.getContextPath() %>/Controllers/UserController.jsp?action=showFindForm">Buscar Usuario</a></li>
             <li><a href="<%= request.getContextPath() %>/Controllers/UserController.jsp?action=listAll">Listar Todos los Usuarios</a></li>
+            <li><a href="<%= request.getContextPath() %>/Controllers/EstudianteController.jsp?action=listAll">Gestionar Estudiantes</a></li>
         </ul>
         <br>
         <a href="<%= request.getContextPath() %>/Controllers/UserController.jsp?action=logout">Cerrar Sesión</a>
