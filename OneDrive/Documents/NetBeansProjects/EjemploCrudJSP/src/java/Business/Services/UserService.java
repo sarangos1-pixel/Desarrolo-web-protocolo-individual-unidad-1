@@ -12,6 +12,7 @@ import Domain.Model.User;
 import Business.Exception.UserNotFoundException;
 import Business.Exception.DuplicateUserException;
 import Infraestructure.Persistence.UserCRUD;
+import jakarta.mail.MessagingException;
 import java.sql.SQLException;
 
 import java.util.List;
@@ -56,7 +57,6 @@ public class UserService {
 
     // Método para autenticar un usuario (login)
     public User loginUser(String email, String password) throws UserNotFoundException, SQLException {
-        // Usamos el nuevo método getUserByEmail en lugar de obtener todos los usuarios
         User user = userCrud.getUserByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
@@ -69,5 +69,11 @@ public class UserService {
     // Método para buscar usuarios por nombre o email
     public List<User> searchUsers(String searchTerm) {
         return userCrud.searchUsers(searchTerm);
+    }
+
+    // === Recordatorio de contraseña por correo (no cambia la clave, solo la reenvia) ===
+    public void sendPasswordReminder(String email) throws UserNotFoundException, SQLException, MessagingException {
+        User user = userCrud.getUserByEmail(email);
+        EmailService.sendPasswordReminderEmail(user.getEmail(), user.getName(), user.getPassword());
     }
 }

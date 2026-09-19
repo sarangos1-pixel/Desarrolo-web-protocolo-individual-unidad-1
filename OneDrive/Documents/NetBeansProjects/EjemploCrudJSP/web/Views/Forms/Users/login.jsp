@@ -29,6 +29,8 @@
     </form>
 
     <br>
+    <a href="<%= request.getContextPath() %>/Controllers/UserController.jsp?action=showForgotPasswordForm">¿Olvidaste tu contraseña?</a>
+    <br>
     <a href="<%= request.getContextPath() %>/index.jsp">Volver a la página de inicio</a>
 </body>
 </html>
